@@ -13,15 +13,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("chat")
+@RequestMapping("ai")
 public class DefaultChatClientController {
     
     @Autowired
     private ChatClient chatClient;
 
-    @GetMapping("generate")
-    public Map<String,Object> chat(String msg){
-        String response = chatClient.prompt().user(msg).call().content();
+    @GetMapping("default_client")
+    public Map<String,Object> chat(String message){
+        String response = chatClient.prompt().user(message).call().content();
         Map<String,Object> map = new HashMap<>();
         map.put("msg",response);
         map.put("code",200);
